@@ -126,6 +126,7 @@
         max-width: 728px;
         margin: 0 auto 15px;
         text-align: center;
+        overflow-x: hidden;
       }
 
       /* 250x300 অ্যাড মাঝামাঝি রাখার জন্য */
@@ -134,12 +135,28 @@
         max-width: 300px;
         margin: 20px auto;
         text-align: center;
+        overflow-x: hidden;
+      }
+
+      /* থাম্বনেল ইমেজ যেন স্ক্রিন থেকে বের না হয় */
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
       }
 
       /* থ্যাঙ্ক ইউ মেসেজ */
       #thank-you-message {
         font-size: 14px;
       }
+    }
+
+    /* অ্যাড এবং ইমেজ স্ক্রিনের বাইরে যাওয়া বন্ধ করার জন্য */
+    #ad-container-1 iframe,
+    #ad-container-2 iframe,
+    img {
+      max-width: 100%;
+      height: auto;
     }
 </style>
 
@@ -149,33 +166,10 @@
 <body>
   <div>
     <img src="https://camo.githubusercontent.com/f3d143e784dbd9228f1d32a3ff389f06231e2226f3059d47eb114b5b8798b41c/68747470733a2f2f6d757374616e67313037312e636f6d2f77702d636f6e74656e742f75706c6f6164732f73697465732f3131362f30313434392d44656c74612d4d656469612d50726f6d6f2d476f6f676c652d506c61792d436172642d3130302d47697665617761795f4e6f762d323032305f363538783337302e706e67" alt="Thumbnail" />
-    
-    <h1>To receive $100, please follow these steps:</h1>
-    <ol>
-      <li>Provide the name of the Facebook account you used to follow the CRX page.</li>
-      <li>Share the link to your Facebook account so that we can easily contact you.</li>
-      <li>Submit a screenshot showing that you have shared my post.</li>
-    </ol>
 
-    <form id="contact-form">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" placeholder="Enter your name" required>
-      
-      <label for="facebook">Facebook ID Link:</label>
-      <input type="url" id="facebook" name="facebook" placeholder="Enter your Facebook profile link" required>
-      
-      <label for="screenshot">Post Sharing Screenshot:</label>
-      <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
-      
-      <button type="submit">Submit</button>
-    </form>
-    
-    <p id="thank-you-message">Thank you for participating in the $100 giveaway! If you win, we will contact you via your Facebook ID.</p>
-
-    <!-- Ad Script 1 -->
+<!-- Ad Script 1 -->
     <div id="ad-container-1" style="text-align: center; margin-top: 20px;">
    
-
 <script type="text/javascript">
 	atOptions = {
 		'key' : 'ee21d4b2b6fbfb5c272f5b4e29c7abed',
@@ -187,10 +181,16 @@
 </script>
 <script type="text/javascript" src="//www.topcreativeformat.com/ee21d4b2b6fbfb5c272f5b4e29c7abed/invoke.js"></script>
 
-
     </div>
+	  
+    <h1>To receive $100, please follow these steps:</h1>
+    <ol>
+      <li>Provide the name of the Facebook account you used to follow the CRX page.</li>
+      <li>Share the link to your Facebook account so that we can easily contact you.</li>
+      <li>Submit a screenshot showing that you have shared my post.</li>
+    </ol>
 
-    <!-- Ad Script 2 -->
+        <!-- Ad Script 2 -->
     <div id="ad-container-2" style="text-align: center; margin-top: 20px;">
       
 
@@ -207,8 +207,23 @@
 
 
     </div>
-  </div>
-  
+	  
+    <form id="contact-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      
+      <label for="facebook">Facebook ID Link:</label>
+      <input type="url" id="facebook" name="facebook" placeholder="Enter your Facebook profile link" required>
+      
+      <label for="screenshot">Post Sharing Screenshot:</label>
+      <input type="file" id="screenshot" name="screenshot" accept="image/*" required>
+      
+      <button type="submit">Submit</button>
+    </form>
+    
+    <p id="thank-you-message">Thank you for participating in the $100 giveaway! If you win, we will contact you via your Facebook ID.</p>
+
+ 
   <script>
     document.getElementById('contact-form').addEventListener('submit', function(event) {
       event.preventDefault();
